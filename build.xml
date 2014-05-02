@@ -11,6 +11,7 @@
   </fileset>
 
   <target name="main" description="main target">
+    <exec command="composer install" dir="${srcdir}"
     <copy todir="${builddir}">
       <fileset refid="allfiles" />
     </copy>
