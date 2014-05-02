@@ -25,7 +25,7 @@
     <!-- Target: Test                               -->
     <!-- ============================================  -->
     <target name="test" description="tests this package">
-      <symlink target="/home/vagrant/Drupal" link="${builddir}/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards">
+      <symlink target="/home/vagrant/Drupal" link="${builddir}/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards" />
         <phpmd
           file="${srcdir}/blah.php">
         </phpmd>
