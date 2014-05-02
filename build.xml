@@ -1,9 +1,9 @@
 <?xml version="1.0"  encoding="UTF-8" ?>
 
-<project name="testsite" basedir="." default="main">
+<project name="Drupal" basedir="." default="main">
 
   <property name="package"  value="${phing.project.name}" override="true" />
-  <property name="builddir" value="./build/testsite" override="true" />
+  <property name="builddir" value="./build/Drupal" override="true" />
   <property name="srcdir"   value="${project.basedir}" override="true" />
 
   <fileset dir="." id="allfiles">
@@ -11,15 +11,17 @@
   </fileset>
 
   <target name="main" description="main target">
-    <exec command="composer install" dir="${srcdir}"
     <copy todir="${builddir}">
       <fileset refid="allfiles" />
     </copy>
     <mkdir dir="${builddir}/log" />
   </target>
 
+  <target name="clean" description="clean dat build">
+  </target>
+
   <target name="test" description="tests this package">
-    <symlink target="/home/vagrant/Drupal" link="${builddir}/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal" />
+    <symlink target="/var/lib/jenkins/Drupal" link="${builddir}/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal" />
     <phpmd file="${srcdir}/blah.php" />
     <phpcodesniffer standard="Drupal" format="full" file="${srcdir}/blah.php"/>
   </target>
