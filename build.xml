@@ -15,7 +15,8 @@
     <!-- (DEFAULT) Target: main                        -->
     <!-- ============================================  -->
     <target name="main" description="main target">
-      <mkdir dir="./build/testsite/log" />
+      <mkdir dir="${builddir}/log" />
+
         <copy todir="${builddir}">
             <fileset refid="allfiles" />
         </copy>
@@ -24,10 +25,11 @@
     <!-- Target: Test                               -->
     <!-- ============================================  -->
     <target name="test" description="tests this package">
+      <symlink target="/home/vagrant/Drupal" link="${builddir}/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards">
         <phpmd
           file="${srcdir}/blah.php">
         </phpmd>
-        <phpcodesniffer standard="${srcdir}/ruleset.xml" format="full" file="${srcdir}/blah.php"/>
+        <phpcodesniffer standard="Drupal" format="full" file="${srcdir}/blah.php"/>
     </target>
 
     <target name="test-ci" description="test this package and outputs to xml whatev">
